@@ -5,7 +5,7 @@ const TextFilder = (props) => {
     return (
         <div className="filder-text">
             <label>{props.label}</label>
-            <input placeholder={placeHolderMod}></input>
+            <input required={props.required} placeholder={placeHolderMod}></input>
         </div>
     )
 }
