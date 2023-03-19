@@ -5,16 +5,6 @@ import TextFilder from "../TextField"
 import './Form.css'
 
 const Form = (props) => {
-    const times = [
-        'Programação',
-        'Front-End',
-        'Data Science',
-        'Devops',
-        'UX e Design',
-        'Mobile',
-        ' Inovação e Gestão'
-    ]
-
     const [nome, setNome] = useState(' ')
     const [cargo, setCargo] = useState(' ')
     const [image, setImage] = useState(' ')
@@ -22,14 +12,18 @@ const Form = (props) => {
 
     const saveForm = (event) => {
         event.preventDefault();
-        console.log('Form saved', nome, cargo, image, time)
         props.employeesRegistered({
             nome,
             cargo,
             image,
             time
         })
+        setNome('')
+        setCargo('')
+        setImage('')
+        setTime('')
     }
+
     return (
         <section className="form">
             <form onSubmit={saveForm}>
@@ -54,7 +48,7 @@ const Form = (props) => {
                 <Dropdown
                     required={true}
                     label="Times"
-                    items={times}
+                    items={props.teams}
                     valueTarget={time}
                     valueChange={valueTarget => setTime(valueTarget)} />
                 <Button>Criar Card</Button>
